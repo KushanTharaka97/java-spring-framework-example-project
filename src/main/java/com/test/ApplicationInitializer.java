@@ -12,10 +12,10 @@ public class ApplicationInitializer implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         //bootstrap dispatherservelet
-        AnnotationConfigWebApplicationContext contect = new AnnotationConfigWebApplicationContext();
-
+        AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
+        context.register(ApplicationConfig.class);
         ServletRegistration.Dynamic servletRegistration =
-                servletContext.addServlet("mvc", new DispatcherServlet(contect));
+                servletContext.addServlet("mvc", new DispatcherServlet(context));
 
 
         //run in priority speed
